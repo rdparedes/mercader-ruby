@@ -1,25 +1,25 @@
-require_relative("io_handler")
+require_relative('io_handler')
 
 class Mercader
 
-    def initialize(input_file_path, output_file_path)
-        @input_file_path = input_file_path
-        @output_file_path = output_file_path
-    end
+    # attr_reader :input_file_path,:output_file_path
 
-    attr_reader :input_file_path,:output_file_path
+    def calculate(input_file_path, output_file_path)
+        input_text = IOHandler.read_file(input_file_path)
+        input_lines = IOHandler.get_lines_from_string(input_text)
+        output = []
 
-    def return_val(value)
-        return value
-    end
+        input_lines.each do |input_line|
+            
+        end
 
-    def run()
-        io_handler = IOHandler.new(@input_file_path, @output_file_path)
-        input_text = io_handler.read_file()
+        # Interpretar inputs
+            # Grabar valores equivalentes a numeros romanos
+            # Calcular valores de metales
+            # Leer preguntas
 
-        puts input_text
+        # Ir guardando respuestas en el output dependiendo de la línea
+
+        IOHandler.write_file(output_file_path, output.join("\n"))
     end
 end
-
-app = Mercader.new("./data/sample-input.txt", "./data/output.txt")
-app.run()
