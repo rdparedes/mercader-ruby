@@ -13,7 +13,7 @@ class TestIOHandler < Test::Unit::TestCase
         @test_file.unlink
     end
 
-    def test_should_read_file_contents_and_return_as_string()
+    def test_should_read_file_contents_and_return_as_string
         expected_output = ["line1", "line2"].join("\n")
 
         @test_file.write(expected_output)
@@ -24,7 +24,7 @@ class TestIOHandler < Test::Unit::TestCase
         assert_equal(expected_output, actual_string)
     end
 
-    def test_should_write_text_to_file()
+    def test_should_write_text_to_file
         expected_string = ["line1", "line2"].join("\n")
 
         IOHandler.write_file(@test_file.path, expected_string)
@@ -34,7 +34,7 @@ class TestIOHandler < Test::Unit::TestCase
         assert_equal(expected_string, actual_string)
     end
 
-    def test_should_return_multi_lines_string_as_list()
+    def test_should_return_multi_lines_string_as_list
         multi_line_string = ["line1", "line2"].join("\n")
         expected_list = ["line1", "line2"]
 

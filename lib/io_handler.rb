@@ -8,7 +8,6 @@ class IOHandler
                     input_text << line
                 end
             end
-            
             return input_text
 
         rescue Exception => e

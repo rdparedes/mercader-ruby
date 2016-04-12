@@ -5,7 +5,7 @@ require 'test/unit'
 
 class TestMercader < Test::Unit::TestCase
 
-    def test_should_convert_intergallactic_currency_to_roman_numbers()
+    def test_should_convert_intergallactic_currency_to_roman_numbers
         input_file_path = "./data/test-input.txt"
         output_file_path = ".data/test-output.txt"
 

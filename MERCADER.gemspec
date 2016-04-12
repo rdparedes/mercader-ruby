@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
     spec.description   = %q{After 5 months working in TW, this is my second solution to the same problem I solved when I entered the company.}
     spec.license       = "MIT"
 
-    spec.files         = ['lib/MERCADER.rb']
-    spec.executables   = ['bin/MERCADER']
-    spec.test_files    = ['tests/test_MERCADER.rb']
+    spec.files         = ['lib/mercader.rb']
+    spec.executables   = ['bin/mercader']
+    spec.test_files    = ['tests/test_mercader.rb']
     spec.require_paths = ["lib"]
 end
