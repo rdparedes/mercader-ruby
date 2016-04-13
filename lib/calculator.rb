@@ -69,8 +69,4 @@ class Calculator
         return quantity
     end
 
-    def calculate(quantity, value)
-        return
-    end
-
 end
