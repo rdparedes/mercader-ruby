@@ -34,16 +34,11 @@ class Calculator
 
     def translate_intergalactic_units(intergalactic_units)
         quantity_in_romans = ""
-        begin
-            intergalactic_units.split(" ").each do |unit|
-                quantity_in_romans += @roman_to_intergalactic_units_mapping.key(unit)
-            end
-            return convert_romans_to_quantity(quantity_in_romans)
 
-        rescue Exception => e
-            puts e.message
-            puts "There was an error while trying to translate intergalactic units"
+        intergalactic_units.split(" ").each do |unit|
+            quantity_in_romans += @roman_to_intergalactic_units_mapping.key(unit)
         end
+        return convert_romans_to_quantity(quantity_in_romans)
     end
 
     def convert_romans_to_quantity(romans)

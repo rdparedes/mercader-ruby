@@ -9,7 +9,7 @@ class TestMercader < Test::Unit::TestCase
 
     def test_should_calculate_input_data
         input_file_path = "./data/test-input.txt"
-        output_file_path = ".data/test-output.txt"
+        output_file_path = "./data/test-output.txt"
 
         expected_output = ["pish tegj glob glob is 42",
                         "glob prok Silver is 68 Credits",
@@ -59,6 +59,13 @@ class TestMercader < Test::Unit::TestCase
         assert_equal(expected_output, mercader_app.output)
     end
 
+    def test_read_line_and_calculate_value_error
+        mercader_app = Mercader.new(Calculator.new())
+        mercader_app.calculate_value("how much is non_existant_unit ?")
+
+        assert_equal(["I have no idea what you are talking about"], mercader_app.output)
+    end
+
     def test_read_line_and_calculate_metal_price
         mercader_app = Mercader.new(Calculator.new())
 
@@ -73,6 +80,13 @@ class TestMercader < Test::Unit::TestCase
         expected_output = ["glob prok Silver is 68 Credits", "glob prok Iron is 782 Credits"]
 
         assert_equal(expected_output, mercader_app.output)
+    end
+
+    def test_read_line_and_calculate_metal_price_error
+        mercader_app = Mercader.new(Calculator.new())
+        mercader_app.calculate_metal_price("how many Credits is glob prok Nometal ?")
+        
+        assert_equal(["I have no idea what you are talking about"], mercader_app.output)
     end
 
 end

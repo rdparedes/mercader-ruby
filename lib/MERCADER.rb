@@ -67,24 +67,34 @@ class Mercader
     end
 
     def calculate_value(input_line)
-        intergalactic_units = input_line.split(" ")[3..-2].join(" ")
-        result = @calculator.translate_intergalactic_units(intergalactic_units)
+        begin
+            intergalactic_units = input_line.split(" ")[3..-2].join(" ")
+            result = @calculator.translate_intergalactic_units(intergalactic_units)
 
-        output_line = intergalactic_units + " is " + trim(result).to_s
+            output_line = intergalactic_units + " is " + trim(result).to_s
 
-        @output.push(output_line)
+            @output.push(output_line)
+
+        rescue Exception => e
+            @output.push("I have no idea what you are talking about")
+        end
     end
 
     def calculate_metal_price(input_line)
-        intergalactic_units = input_line.split(" ")[4..-3].join(" ")
-        metal_name = input_line.split(" ")[-2]
+        begin
+            intergalactic_units = input_line.split(" ")[4..-3].join(" ")
+            metal_name = input_line.split(" ")[-2]
 
-        result = @calculator.translate_intergalactic_units(intergalactic_units) * 
-            @metals[metal_name]
+            result = @calculator.translate_intergalactic_units(intergalactic_units) * 
+                @metals[metal_name]
 
-        output_line = intergalactic_units + " " + metal_name + " is " + trim(result).to_s + " Credits"
+            output_line = intergalactic_units + " " + metal_name + " is " + trim(result).to_s + " Credits"
 
-        @output.push(output_line)
+            @output.push(output_line)
+
+        rescue Exception => e
+            @output.push("I have no idea what you are talking about")
+        end
     end
 
     def trim(number)
