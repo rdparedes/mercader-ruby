@@ -1,9 +1,6 @@
-require_relative('metal')
-
-
 class Calculator
 
-    attr_accessor :units_mapping
+    attr_accessor :roman_to_intergalactic_units_mapping
     
     @@ROMAN_VALUES_MAPPING = {
         "I" => 1,
@@ -14,29 +11,38 @@ class Calculator
         "D" => 500,
         "M" => 1000
     }
+    @@roman_to_intergalactic_units_mapping = {
+        "I" => nil,
+        "V" => nil,
+        "X" => nil,
+        "L" => nil,
+        "C" => nil,
+        "D" => nil,
+        "M" => nil
+    }
 
-    def initialize(units_mapping=nil)
-        @units_mapping = units_mapping ? units_mapping : {}
+    def initialize(roman_to_intergalactic_units_mapping=nil)
+        @roman_to_intergalactic_units_mapping = roman_to_intergalactic_units_mapping ? roman_to_intergalactic_units_mapping : @@roman_to_intergalactic_units_mapping
         @romans_regex = /^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/
     end
 
-    def add_intergallactic_unit(roman_value, name)
-        if @units_mapping.key?(roman_value)
-            @units_mapping[roman_value] = name 
+    def add_intergalactic_unit(roman_value, name)
+        if @roman_to_intergalactic_units_mapping.key?(roman_value)
+            @roman_to_intergalactic_units_mapping[roman_value] = name 
         end
     end
 
-    def translate_intergallactic_units(intergallactic_units)
+    def translate_intergalactic_units(intergalactic_units)
         quantity_in_romans = ""
         begin
-            intergallactic_units.split(" ").each do |unit|
-                quantity_in_romans += @units_mapping.key(unit)
+            intergalactic_units.split(" ").each do |unit|
+                quantity_in_romans += @roman_to_intergalactic_units_mapping.key(unit)
             end
             return convert_romans_to_quantity(quantity_in_romans)
 
         rescue Exception => e
             puts e.message
-            puts "There was an error while trying to translate intergallactic units"
+            puts "There was an error while trying to translate intergalactic units"
         end
     end
 

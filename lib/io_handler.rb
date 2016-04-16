@@ -18,7 +18,7 @@ class IOHandler
 
     def self.write_file(file_path, input)
         begin
-            File.open(file_path, "w") do |f|
+            File.open(file_path, "w+") do |f|
                 f.write(input)
             end
 
