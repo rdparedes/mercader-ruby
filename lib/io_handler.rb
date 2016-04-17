@@ -11,8 +11,7 @@ class IOHandler
             return input_text
 
         rescue Exception => e
-            puts e.message
-            puts "There was an error while trying to read the input file."
+            raise IOError, "There was an error while trying to read the input file."
         end
     end
 
@@ -23,8 +22,7 @@ class IOHandler
             end
 
         rescue Exception => e
-            puts e.message
-            puts "There was an error while trying to save the output file."
+            raise IOError, "There was an error while trying to save the output file."
         end
     end
 
@@ -33,7 +31,7 @@ class IOHandler
             return input.split("\n")
 
         rescue Exception => e
-            puts e.message
+            raise e
         end
     end
 

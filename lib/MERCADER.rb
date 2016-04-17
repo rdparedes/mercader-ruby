@@ -13,17 +13,17 @@ class Mercader
         'calculate_metal_price' => /^how many Credits is (\b(?!is\b)[a-z]+\s?)+ [A-Z][a-z]* \?$/
     }
 
-    def initialize(calculator)
-        @calculator = calculator
+    def initialize(calculator=nil)
+        @calculator = calculator ? calculator : Calculator.new()
         @metals = {}
         @output = []
     end
 
     def calculate(input_file_path, output_file_path)
-        input_text = IOHandler.read_file(input_file_path)
-        input_lines = IOHandler.get_lines_from_string(input_text)
-
         begin
+            input_text = IOHandler.read_file(input_file_path)
+            input_lines = IOHandler.get_lines_from_string(input_text)
+
             input_lines.each do |input_line|
 
                 if input_line.match(@@REGEX['add_intergalactic_unit'])
@@ -44,8 +44,13 @@ class Mercader
                 end
             end
 
+        rescue IOError => e
+            puts e.message
+            raise
+
         rescue Exception => e
-            @output.push("I have no idea what you are talking about")
+            puts e.message
+            raise
         end
 
         IOHandler.write_file(output_file_path, @output.join("\n"))
